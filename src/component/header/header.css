@@ -1,4 +1,4 @@
-header{
+header {
     background-color: var(--backgroundColor);
     display: flex;
     justify-content: space-between;
@@ -6,14 +6,15 @@ header{
     height: 55px;
     padding: 0 30px;
     color: var(--primaryColor);
-    border-bottom: 1px solid var(--primaryColor)
+    border-bottom: 1px solid var(--primaryColor);
+    position: relative;
 }
 
-.links ul{
+.links ul {
     display: flex;
 }
 
-.links li{
+.links li {
     margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -21,7 +22,8 @@ header{
 
 header i {
     margin-left: 5px;
-    font-size: 27px;
+    font-size: 20px;
+    display: inline-block;
 }
 
 header strong {
@@ -34,10 +36,99 @@ header strong {
 header strong::after {
     content: "";
     position: absolute;
-    bottom: 3px;
+    bottom: 1px;
     background-color: var(--primaryColor);
     left: 0;
     display: block;
     height: 3px;
-    width: 100px
+    width: 166px
+}
+
+.rtl header strong::after {
+    left: unset;
+    right: 0;
+    width: 140px
+}
+
+.flagBtn {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.linkToggle {
+    display: none;
+}
+
+.navBtns {
+    display: flex;
+    align-items: self-end;
+    justify-content: space-between;
+}
+
+.userProfile {
+    position: relative;
+}
+
+.user_dropdown {
+    position: absolute;
+    right: 0;
+    background: var(--backgroundColor);
+    padding: 0;
+    width: 100px;
+    border: 1px solid var(--primaryColor);
+    border-radius: 4px;
+    top: 43px;
+}
+
+.user_dropdown a {
+    display: block;
+    padding: 3px;
+}
+
+.user_dropdown a:hover {
+    background-color: var(--foregroundColor);
+    color: var(--primaryColor);
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 0 15px;
+    }
+
+    .links ul {
+        position: absolute;
+        top: 58px;
+        right: 0px;
+        flex-direction: column;
+        background: var(--backgroundColor);
+        height: calc(100vh - 58px);
+        color: var(--primaryColor);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.7s ease-in-out;
+        border-left: 1px solid var(--primaryColor);
+    }
+
+    .linkToggle {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 5px;
+    }
+
+    .linkToggle i {
+        font-size: 29px;
+    }
+
+    header strong {
+        font-size: 18px;
+    }
+
+    header strong::after {
+        width: 122px;
+    }
+
+    .navBtns {
+        margin-right: 15px;
+    }
 }

@@ -1,19 +1,18 @@
-:root{
-    --backgroundColor: #f6f6f6;
-    --foregroundColor: #003cff;
-    --primaryColor: #0a0a0a;
-    --whiteColor : #fff;
-    --toggle-bg: #f0eb9d;
-    --toggle-fg: #ffd000; 
-  }
-  
-
-[data-theme = 'dark']{
-    --backgroundColor: #0a0a0a;
-    --foregroundColor: #567aff;
-    --primaryColor: #fff;
-    --whiteColor : #f6f6f6;
-    --toggle-bg: #283452;
-    --toggle-fg: #00a6ff; 
+:root {
+  --backgroundColor: #f6f6f6;
+  --foregroundColor: #ebf55c;
+  --primaryColor: #0a0a0a;
+  --whiteColor: #fff;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
 }
-  
+
+
+[data-theme='dark'] {
+  --backgroundColor: #0a0a0a;
+  --foregroundColor: #567aff;
+  --primaryColor: #fff;
+  --whiteColor: #f6f6f6;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+}
