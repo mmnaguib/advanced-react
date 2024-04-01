@@ -1,0 +1,43 @@
+header{
+    background-color: var(--backgroundColor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+    padding: 0 30px;
+    color: var(--primaryColor);
+    border-bottom: 1px solid var(--primaryColor)
+}
+
+.links ul{
+    display: flex;
+}
+
+.links li{
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+header i {
+    margin-left: 5px;
+    font-size: 27px;
+}
+
+header strong {
+    font-size: 25px;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+}
+
+header strong::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    background-color: var(--primaryColor);
+    left: 0;
+    display: block;
+    height: 3px;
+    width: 100px
+}

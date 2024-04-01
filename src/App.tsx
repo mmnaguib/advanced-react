@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import i18n from "i18next";
+import cookies from 'js-cookie';
+import { useEffect, useState } from "react";
+import  './TranslationUtil';
 import './App.css';
-
-function App() {
+import Header from "./component/header/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./component/home/Home";
+import useLocalStorage from 'use-local-storage';
+const App = () => {
+  const lng = cookies.get('i18next') || 'en'
+  useEffect(()=> {
+    document.body.lang = i18n.language;
+    document.body.dir = i18n.dir();
+  }, [lng])
+  const [isDark, setIsDark] = useLocalStorage("isDark",false);
+  const GetPrefferedCultureFromLocalStorage = (): string => {
+    var PreferedCulture = localStorage.getItem("PreferedCulture");
+    return String(PreferedCulture);
+};
+const [prefferedCulture, setPrefferedCulture] = useState<string>("ar");
+const culture = GetPrefferedCultureFromLocalStorage();
+if (culture) {
+  if (culture.includes("ar")) {
+    i18n.changeLanguage("ar");
+    setPrefferedCulture("ar");
+  }
+  if (culture.includes("en")) {
+    i18n.changeLanguage("en");
+    setPrefferedCulture("en");
+  }
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className= 'app' data-theme={isDark ? "dark" : "light"}>
+        <Header isDark={isDark} setIsDark={setIsDark}/>
+        <Routes>
+          <Route index path="/" element={<Home />}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
+    
   );
 }
 
