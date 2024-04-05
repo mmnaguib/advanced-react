@@ -21,7 +21,7 @@ header {
 }
 
 header i {
-    margin-left: 5px;
+    margin: 0 6px;
     font-size: 20px;
     display: inline-block;
 }
@@ -41,13 +41,12 @@ header strong::after {
     left: 0;
     display: block;
     height: 3px;
-    width: 166px
+    width: calc(100% + 7px);
 }
 
 .rtl header strong::after {
     left: unset;
     right: 0;
-    width: 140px
 }
 
 .flagBtn {
@@ -66,8 +65,14 @@ header strong::after {
     justify-content: space-between;
 }
 
+.userAuth a {
+    display: inline-block;
+    width: 70px;
+}
+
 .userProfile {
     position: relative;
+    margin: 0 15px;
 }
 
 .user_dropdown {
@@ -91,7 +96,7 @@ header strong::after {
     color: var(--primaryColor);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 991px) {
     header {
         padding: 0 15px;
     }
@@ -99,14 +104,19 @@ header strong::after {
     .links ul {
         position: absolute;
         top: 58px;
-        right: 0px;
+        left: 0px;
         flex-direction: column;
         background: var(--backgroundColor);
         height: calc(100vh - 58px);
         color: var(--primaryColor);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         transition: all 0.7s ease-in-out;
-        border-left: 1px solid var(--primaryColor);
+        border-right: 1px solid var(--primaryColor);
+        width: 200px;
+    }
+
+    header strong {
+        font-size: 18px;
     }
 
     .linkToggle {
@@ -120,15 +130,24 @@ header strong::after {
         font-size: 29px;
     }
 
-    header strong {
-        font-size: 18px;
-    }
-
-    header strong::after {
-        width: 122px;
-    }
-
     .navBtns {
         margin-right: 15px;
+    }
+
+    .rtl .toggle-container {
+        margin-left: 20px;
+    }
+
+    .rtl .links ul {
+        right: 0;
+        left: unset;
+        border-left: 1px solid var(--primaryColor);
+        border-right: 0;
+        width: 160px;
+    }
+
+    .rtl .linkToggle {
+        left: 0;
+        right: unset;
     }
 }

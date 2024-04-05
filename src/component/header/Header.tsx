@@ -2,19 +2,20 @@ import i18n from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./header.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Toggle from "../toggle/Toggle";
-import imgAvatar from "../../assets/images/avatar.png";
+// import imgAvatar from "../../assets/images/avatar.png";
 import arFlag from "../../assets/images/eg-flag.jpeg";
 import enFlag from "../../assets/images/en-flag.jpeg";
 import { AddClassToApp, UpdateBodyDirection } from "../../repeatFunction";
+// import { Button } from "devextreme-react";
 interface Props {
   setIsDark: (value: boolean) => void;
   isDark: boolean;
 }
 const Header = ({ isDark, setIsDark }: Props) => {
   const [showLinks, setShowLinks] = useState<boolean>(false);
-  const [showUserDrop, setShowUserDrop] = useState<boolean>(false);
+  // const [showUserDrop, setShowUserDrop] = useState<boolean>(false);
   const { t } = useTranslation();
   UpdateBodyDirection();
   useEffect(() => {
@@ -44,13 +45,22 @@ const Header = ({ isDark, setIsDark }: Props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact">{t("contact us")}</NavLink>
+            <NavLink to="/contact">
+              <i className="bi bi-telephone"></i>
+              {t("contact us")}
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/products">{t("products")}</NavLink>
+            <NavLink to="/products">
+              <i className="bi bi-box"></i>
+              {t("products")}
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/admin-dashboard">{t("admin-dashboard")}</NavLink>
+            <NavLink to="/admin-dashboard">
+              <i className="bi bi-person-lines-fill"></i>
+              {t("admin-dashboard")}
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -62,17 +72,8 @@ const Header = ({ isDark, setIsDark }: Props) => {
             <i className="bi bi-list"></i>
           )}
         </div>
-        {i18n.language === "en" && (
-          <button className="flagBtn" onClick={() => i18n.changeLanguage("ar")}>
-            <img src={arFlag} width="30px" alt="ar flag" />
-          </button>
-        )}
-        {i18n.language === "ar" && (
-          <button className="flagBtn" onClick={() => i18n.changeLanguage("en")}>
-            <img src={enFlag} width="30px" alt="en flag" />
-          </button>
-        )}
-        <div className="userProfile">
+        <div className="userAuth">
+          {/* <div className="userProfile">
           <img
             src={imgAvatar}
             onClick={() => setShowUserDrop(!showUserDrop)}
@@ -93,7 +94,25 @@ const Header = ({ isDark, setIsDark }: Props) => {
               </NavLink>
             </div>
           )}
+        </div> */}
+          <Link to="/login" className="btn btn-sm btn-primary">
+            {t("login")}
+          </Link>{" "}
+          &nbsp;
+          <Link to="/register" className="btn btn-sm btn-primary">
+            {t("Register")}
+          </Link>
         </div>
+        {i18n.language === "en" && (
+          <button className="flagBtn" onClick={() => i18n.changeLanguage("ar")}>
+            <img src={arFlag} width="30px" alt="ar flag" />
+          </button>
+        )}
+        {i18n.language === "ar" && (
+          <button className="flagBtn" onClick={() => i18n.changeLanguage("en")}>
+            <img src={enFlag} width="30px" alt="en flag" />
+          </button>
+        )}
         <Toggle handleChange={handleChange} isChecked={isDark} />
       </div>
     </header>
